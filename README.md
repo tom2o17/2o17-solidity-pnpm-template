@@ -1,3 +1,5 @@
+[![Node.js CI](https://github.com/tom2o17/2o17-solidity-pnpm-template/actions/workflows/test.yml/badge.svg)](https://github.com/tom2o17/2o17-solidity-pnpm-template/actions/workflows/test.yml)
+
 # 🏎️ Foundry Template tom2o17 🏎️
 
 Default Foundry Template with pnpm and no `.gitModules` 
