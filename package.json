@@ -1,0 +1,28 @@
+{
+  "name": "Fancy-Address-Land",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint:check": "prettier --check '**/*.(sol)'  --ignore-path=.gitignore",
+    "lint:fix-all": "prettier --write '**/*.(sol)' --ignore-path=.gitignore",
+    "test": "forge test",
+    "compile": "forge build",
+    "build": "forge build",
+    "size": "forge build --sizes",
+    "b": "forge b",
+    "t": "forge t"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.8.0",
+    "@uniswap/v3-core": "1.0.0",
+    "@uniswap/v3-periphery": "1.4.4",
+    "ds-test": "github:dapphub/ds-test",
+    "forge-std": "github:foundry-rs/forge-std#e8a047e3f40f13fa37af6fe14e6e06283d9a060e",
+    "frax-standard-solidity": "github:FraxFinance/frax-standard-solidity",
+    "prettier": "^3.5.3"
+  }
+}
