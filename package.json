@@ -20,12 +20,14 @@
     "@openzeppelin/contracts": "^4.8.0",
     "@uniswap/v3-core": "1.0.0",
     "@uniswap/v3-periphery": "1.4.4",
+    "dotenv": "^16.5.0",
     "ds-test": "github:dapphub/ds-test",
+    "ethers": "^6.14.0",
     "forge-std": "github:foundry-rs/forge-std#77041d2ce690e692d6e03cc812b57d1ddaa4d505",
     "frax-standard-solidity": "github:FraxFinance/frax-standard-solidity",
     "prettier": "^3.5.3",
-    "prettier-plugin-svelte": "^3.3.3",
     "prettier-plugin-solidity": "^2.0.0",
+    "prettier-plugin-svelte": "^3.3.3",
     "solidity-parse": "^0.0.2"
   },
   "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92"

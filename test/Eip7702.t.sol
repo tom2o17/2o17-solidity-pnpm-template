@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: ISC
 pragma solidity ^0.8.20;
 
-import "frax-std/FraxTest.sol";
 import { IERC20 } from "node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Test, console2 as console } from "forge-std/Test.sol";
 import { Vm } from "forge-std/Vm.sol";
@@ -40,10 +39,14 @@ contract Test_EIP_7702 is Test {
     uint256[] values;
     bytes[] data;
     function test_EIP_7702() public {
+        // Notice Implementation is broken for scripting, 
+        // does not allow for the signer to set nonce to current nonce
+        // This means that the signer of the delegation must be the broadcaster of the txn
         Vm.SignedDelegation memory signedDelegation = vm.signDelegation(batcher, key_al);
+        vm.setNonce(al, uint64(0));
+
         uint nonce = vm.getNonce(al);
         console.log("nonce: ", nonce);
-
         
         nonce = vm.getNonce(al);
         console.log("nonce: ", nonce);
@@ -57,14 +60,14 @@ contract Test_EIP_7702 is Test {
         values.push(0);
         data.push(
             abi.encodeWithSignature(
-                "transfer(address,uint256)",
+                "approve(address,uint256)",
                 address(bob),
                 uint(69)
             )
         );
         data.push(
             abi.encodeWithSignature(
-                "transfer(address,uint256)",
+                "approve(address,uint256)",
                 address(bob),
                 uint(69)
             )
@@ -75,7 +78,7 @@ contract Test_EIP_7702 is Test {
         bytes memory code = address(al).code;
         require(code.length > 0, "no code written to Alice");
 
-        vm.startBroadcast(bob);
+        vm.startBroadcast(al);
         Batcher(al).exec(
             targets,
             values,
@@ -83,11 +86,8 @@ contract Test_EIP_7702 is Test {
         );
         vm.stopBroadcast();
 
-        nonce = vm.getNonce(al);
-        console.log("nonce: ", nonce);
-    
-        console.log(" frx allowance", frxUSD.balanceOf(bob));
-        console.log(" frx allowance", lfrax.balanceOf(bob));
+        console.log(" frx allowance", frxUSD.allowance(al, bob));
+        console.log(" frx allowance", lfrax.allowance(al, bob));
     }
 }
 
