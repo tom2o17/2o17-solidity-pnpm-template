@@ -27,10 +27,13 @@ importers:
         specifier: github:FraxFinance/frax-standard-solidity
         version: https://codeload.github.com/FraxFinance/frax-standard-solidity/tar.gz/764aa0039e248a5a8a6b6f40e691b41b11773610(ethers@5.8.0)
       prettier:
-        specifier: ^3.5.3
+        specifier: 3.5.3
         version: 3.5.3
+      prettier-plugin-solidity:
+        specifier: 2.0.0
+        version: 2.0.0(prettier@3.5.3)
       prettier-plugin-svelte:
-        specifier: ^3.3.3
+        specifier: 3.3.3
         version: 3.3.3(prettier@3.5.3)(svelte@5.22.1)
 
 packages:
@@ -50,6 +53,9 @@ packages:
   '@babel/runtime@7.26.9':
     resolution: {integrity: sha512-aA63XwOkcl4xxQa3HjPMqOP6LiK0ZDv3mUPYEFXkpHbaFjtGggE1A61FjFzJnB+p7/oy2gA8E+rcBNl/zC1tMg==}
     engines: {node: '>=6.9.0'}
+
+  '@bytecodealliance/preview2-shim@0.17.2':
+    resolution: {integrity: sha512-mNm/lblgES8UkVle8rGImXOz4TtL3eU3inHay/7TVchkKrb/lgcVvTK0+VAw8p5zQ0rgQsXm1j5dOlAAd+MeoA==}
 
   '@chainlink/contracts@0.6.1':
     resolution: {integrity: sha512-EuwijGexttw0UjfrW+HygwhQIrGAbqpf1ue28R55HhWMHBzphEH0PhWm8DQmFfj5OZNy8Io66N4L0nStkZ3QKQ==}
@@ -177,6 +183,9 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
+  '@nomicfoundation/slang@1.1.0':
+    resolution: {integrity: sha512-g2BofMUq1qCP22L/ksOftScrCxjdHTxgg8ch5PYon2zfSSKGCMwE4TgIC64CuorMcSsvCmqNNFEWR/fwFcMeTw==}
+
   '@openzeppelin/contracts-upgradeable@4.9.6':
     resolution: {integrity: sha512-m4iHazOsOCv1DgM7eD7GupTJ+NFVujRZt1wzddDPSVGpWdKq1SKkla5htKG7+IS4d2XOCtzkUNwRZ7Vq5aEUMA==}
 
@@ -205,6 +214,9 @@ packages:
 
   '@solidity-parser/parser@0.19.0':
     resolution: {integrity: sha512-RV16k/qIxW/wWc+mLzV3ARyKUaMUTBy9tOLMzFhtNSKYeTAanQ3a5MudJKf/8arIFnA2L27SNjarQKmFg0w/jA==}
+
+  '@solidity-parser/parser@0.20.2':
+    resolution: {integrity: sha512-rbu0bzwNvMcwAjH86hiEAcOeRI2EeK8zCkHDrFykh/Al8mvJeFmjy3UrE7GYQjNwOgbGUUtCn5/k8CB8zIu7QA==}
 
   '@sveltejs/acorn-typescript@1.0.5':
     resolution: {integrity: sha512-IwQk4yfwLdibDlrXVE04jTZYlLnwsTT2PIOQQGNLWfjavGifnk1JD1LcZjZaBTRcxZu2FfPfNLOE04DSu9lqtQ==}
@@ -789,6 +801,12 @@ packages:
     peerDependencies:
       prettier: '>=2.3.0'
 
+  prettier-plugin-solidity@2.0.0:
+    resolution: {integrity: sha512-tis3SwLSrYKDzzRFle48fjPM4GQKBtkVBUajAkt4b75/cc6zojFP7qjz6fDxKfup+34q0jKeSM3QeP9flJFXWw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      prettier: '>=3.0.0'
+
   prettier-plugin-svelte@3.3.3:
     resolution: {integrity: sha512-yViK9zqQ+H2qZD1w/bH7W8i+bVfKrD8GIFjkFe4Thl6kCT9SlAsXVNmt3jCvQOCsnOhcvYgsoVlRV/Eu6x5nNw==}
     peerDependencies:
@@ -1034,6 +1052,8 @@ snapshots:
   '@babel/runtime@7.26.9':
     dependencies:
       regenerator-runtime: 0.14.1
+
+  '@bytecodealliance/preview2-shim@0.17.2': {}
 
   '@chainlink/contracts@0.6.1(ethers@5.8.0)':
     dependencies:
@@ -1359,6 +1379,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@nomicfoundation/slang@1.1.0':
+    dependencies:
+      '@bytecodealliance/preview2-shim': 0.17.2
+
   '@openzeppelin/contracts-upgradeable@4.9.6': {}
 
   '@openzeppelin/contracts@3.4.2': {}
@@ -1380,6 +1404,8 @@ snapshots:
       antlr4ts: 0.5.0-alpha.4
 
   '@solidity-parser/parser@0.19.0': {}
+
+  '@solidity-parser/parser@0.20.2': {}
 
   '@sveltejs/acorn-typescript@1.0.5(acorn@8.14.0)':
     dependencies:
@@ -1989,6 +2015,13 @@ snapshots:
   prettier-plugin-solidity@1.4.2(prettier@3.5.3):
     dependencies:
       '@solidity-parser/parser': 0.19.0
+      prettier: 3.5.3
+      semver: 7.7.1
+
+  prettier-plugin-solidity@2.0.0(prettier@3.5.3):
+    dependencies:
+      '@nomicfoundation/slang': 1.1.0
+      '@solidity-parser/parser': 0.20.2
       prettier: 3.5.3
       semver: 7.7.1
 
